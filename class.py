@@ -8,7 +8,7 @@ class Developer(object):
     name = 'WuXiaolong'
     site = 'http://wuxiaolong.me/'
 
-    # 变量名两个下划线开头，定义私有属性, 这样在类外部无法直接进行访问
+    # 变量名两个下划线开头，定义私有属性, 这样在类外部无法直接进行访问，类的私有方法也是如此
     __sex = 0
 
     # 定义构造方法，对象的方法
@@ -18,14 +18,14 @@ class Developer(object):
         self.__sex = sex
 
     # 类方法
-    def getSex(self):
+    def get_sex(self):
         return self.__sex
 
-    def setSex(self, sex):
+    def set_sex(self, sex):
         self.__sex = sex
 
 
 # 实例化类
 developer = Developer('wxl', 'http://wuxiaolong.me/', 1)  # 实例变量
 
-print(developer.site, developer.getSex())  # 访问类的属性和方法
+print(developer.site, developer.get_sex())  # 访问类的属性和方法
