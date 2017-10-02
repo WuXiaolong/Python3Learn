@@ -1,0 +1,31 @@
+class Student:
+    pass
+
+
+# 或者
+class Developer(object):
+    # 定义类属性
+    name = 'WuXiaolong'
+    site = 'http://wuxiaolong.me/'
+
+    # 变量名两个下划线开头，定义私有属性, 这样在类外部无法直接进行访问
+    __sex = 0
+
+    # 定义构造方法，对象的方法
+    def __init__(self, name, site, sex):
+        self.name = name
+        self.site = site
+        self.__sex = sex
+
+    # 类方法
+    def getSex(self):
+        return self.__sex
+
+    def setSex(self, sex):
+        self.__sex = sex
+
+
+# 实例化类
+developer = Developer('wxl', 'http://wuxiaolong.me/', 1)  # 实例变量
+
+print(developer.site, developer.getSex())  # 访问类的属性和方法
