@@ -11,3 +11,7 @@ dic.pop('code')  # 删除 code 键
 print(dic)  # 打印：{'name': 'WuXiaolong', 'site': 'http://wuxiaolong.me/', 'id': 1314}
 dic.clear()  # 清空
 print(dic)  # 打印：{}
+
+# dict() 方法创建字典
+d = dict(id=1024, name='wxl', site='http://wuxiaolong.me/')
+print(d)
