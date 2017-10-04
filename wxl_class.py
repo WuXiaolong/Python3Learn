@@ -25,7 +25,7 @@ class Developer(object):
         self.__sex = sex
 
 
-# 实例化类
-developer = Developer('wxl', 'http://wuxiaolong.me/', 1)  # 实例变量
-
-print(developer.site, developer.get_sex())  # 访问类的属性和方法
+if __name__ == '__main__':
+    # 实例化类
+    developer = Developer('wxl', 'http://wuxiaolong.me/', 1)  # 实例变量
+    print(developer.site, developer.get_sex())  # 访问类的属性和方法
