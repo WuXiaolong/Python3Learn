@@ -15,3 +15,4 @@ print(dic)  # 打印：{}
 # dict() 方法创建字典
 d = dict(id=1024, name='wxl', site='http://wuxiaolong.me/')
 print(d)
+print(d.copy())  # 浅复制

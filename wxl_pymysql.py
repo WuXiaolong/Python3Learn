@@ -45,12 +45,13 @@ def insert_table():
     # 使用 cursor() 方法创建一个游标对象 cursor
     cursor = db.cursor()
     try:
-        value = ('wxl', 'Android', 'http://wuxiaolong.me/')
+        value = ('wxl', 'Python', 'http://wuxiaolong.me/')
         # 执行 sql 语句
         cursor.execute(sql, value)
         # 提交事务
         db.commit()
         print('insert table success')
+        return True
 
     except BaseException as e:
         # 如果发生错误则回滚
@@ -86,8 +87,59 @@ def query_table():
         cursor.scroll(0, mode='absolute')
         # 查询多条记录
         results = cursor.fetchall()
+        data = {}
+        lists = []
         for row in results:
+            data = data.copy()  # 坑点：https://www.zhihu.com/question/40283828
             print('查询多条记录：id=%s,name=%s,job=%s,site=%s' % (row[0], row[1], row[2], row[3]))
+            data['id'] = row[0]
+            data['name'] = row[1]
+            data['job'] = row[2]
+            data['site'] = row[3]
+            lists.append(data)
+        print(lists)
+        return lists
+
+    except BaseException as e:
+        # 如果发生错误则回滚
+        db.rollback()
+        print(e)
+
+    finally:
+        # 关闭游标连接
+        cursor.close()
+        # 关闭数据库连接
+        db.close()
+
+
+def query_table_id(id):
+    # 建立连接
+    db = pymysql.connect(host='localhost',
+                         user='root',
+                         password='root',
+                         db='test4python')
+    # 查询语句
+    sql = 'select * from developer where id=%s'
+    # 使用 cursor() 方法创建一个游标对象 cursor
+    cursor = db.cursor()
+    try:
+        value = (id,)
+        # 执行 sql 语句
+        cursor.execute(sql, value)
+        # 查询多条记录
+        results = cursor.fetchall()
+        data = {}
+        lists = []
+        for row in results:
+            data = data.copy()
+            data['id'] = row[0]
+            data['name'] = row[1]
+            data['job'] = row[2]
+            data['site'] = row[3]
+            lists.append(data)
+
+        print(lists)
+        return lists
 
     except BaseException as e:
         # 如果发生错误则回滚
@@ -112,12 +164,13 @@ def update_table():
     # 使用 cursor() 方法创建一个游标对象 cursor
     cursor = db.cursor()
     try:
-        value = ('WuXia33olong', 3)
+        value = ('WuXia3dfdf3olong', 8)
         # 执行 sql 语句
         cursor.execute(sql, value)
         # 提交事务
         db.commit()
         print('update table success')
+        return True
 
     except BaseException as e:
         # 如果发生错误则回滚
@@ -142,11 +195,13 @@ def delete_table():
     # 使用 cursor() 方法创建一个游标对象 cursor
     cursor = db.cursor()
     try:
+        value = (8,)
         # 执行sql语句
-        cursor.execute(sql, 4)
+        cursor.execute(sql, value)
         # 提交事务
         db.commit()
         print('delete table success')
+        return True
 
     except BaseException as e:
         # 如果发生错误则回滚
@@ -164,5 +219,7 @@ if __name__ == '__main__':
     # create_table()
     # insert_table()
     # query_table()
-    update_table()
-    delete_table()
+    # query_table(5)
+    # update_table()
+    # delete_table()
+    pass
