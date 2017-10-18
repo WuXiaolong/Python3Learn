@@ -1,9 +1,46 @@
 import requests
 from bs4 import BeautifulSoup
 
+header = {"X-Bmob-Application-Id": '',
+          "X-Bmob-REST-API-Key": '',
+          "Content-Type": 'application/json'
+          }
 # Get  请求
-response = requests.get('http://wuxiaolong.me/')
+response = requests.get('https://api.bmob.cn/1/classes/ArticleTable/', headers=header)
 
+# obj = {"article_title": "title3",
+#        "article_author": "author3",
+#        "article_content": "content3",
+#        "article_create_time": 20171012
+#        }
+
+# response = requests.post('https://api.bmob.cn/1/classes/article/', headers=header, json=obj)
+
+# obj = {
+#     "requests": [
+#         {
+#             "method": "POST",
+#             "path": "/1/classes/article",
+#             "body": {
+#                 "article_title": "title3333",
+#                 "article_author": "author3",
+#                 "article_content": "content3",
+#                 "article_create_time": 20171013
+#             }
+#         },
+#         {
+#             "method": "POST",
+#             "path": "/1/classes/article",
+#             "body": {
+#                 "article_title": "title4444",
+#                 "article_author": "author4",
+#                 "article_content": "content4",
+#                 "article_create_time": 20171014
+#             }
+#         }
+#     ]
+# }
+# response = requests.post('https://api.bmob.cn/1/batch', headers=header, json=obj)
 # 状态码
 print(response.status_code)
 
@@ -11,21 +48,4 @@ print(response.status_code)
 print(response.reason)
 
 # 响应内容
-# print(response.content)
-
-soup = BeautifulSoup(response.content, "html.parser")
-article_list = soup.find_all("article", class_='post post-type-normal')
-# for article in article_list:
-#     # article_soup = BeautifulSoup(article, "html.parser")
-#     post_title = article.a
-#     print('post_title=%s' % post_title.string)
-
-# print(article_list[0])
-
-article_list0 = article_list[0]
-print('post_title=%s' % article_list0.a.string)
-print('href=%s' % article_list0.a['href'])
-print('发表于=%s' % article_list0.time.string)
-print('分类于=%s' % article_list0.find('span', itemprop='name').string)
-# 如果tag只有一个 NavigableString 类型子节点,那么这个tag可以使用 .string 得到子节点
-print('内容摘要=%s' % article_list0.find('div', class_='post-body'))
+print(response.text)
