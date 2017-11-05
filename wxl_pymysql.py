@@ -6,7 +6,7 @@ def create_table():
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='root',
-                         db='test4python')
+                         db='python3learn')
     # 创建名为 developer 数据库语句
     sql = '''create table if not exists developer (
     id int NOT NULL AUTO_INCREMENT, 
@@ -39,7 +39,7 @@ def insert_table():
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='root',
-                         db='test4python')
+                         db='python3learn')
     # 插入数据
     sql = 'insert into developer (name,job,site) values (%s, %s, %s)'
     # 使用 cursor() 方法创建一个游标对象 cursor
@@ -70,7 +70,7 @@ def query_table():
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='root',
-                         db='test4python')
+                         db='python3learn')
     # 查询语句
     sql = 'select * from developer'
     # 使用 cursor() 方法创建一个游标对象 cursor
@@ -112,18 +112,18 @@ def query_table():
         db.close()
 
 
-def query_table_id(id):
+def query_table_id(developer_id):
     # 建立连接
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='root',
-                         db='test4python')
+                         db='python3learn')
     # 查询语句
     sql = 'select * from developer where id=%s'
     # 使用 cursor() 方法创建一个游标对象 cursor
     cursor = db.cursor()
     try:
-        value = (id,)
+        value = (developer_id,)
         # 执行 sql 语句
         cursor.execute(sql, value)
         # 查询多条记录
@@ -158,13 +158,13 @@ def update_table():
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='root',
-                         db='test4python')
+                         db='python3learn')
     # 更新数据
     sql = 'update developer set name=%s where id=%s'
     # 使用 cursor() 方法创建一个游标对象 cursor
     cursor = db.cursor()
     try:
-        value = ('WuXia3dfdf3olong', 8)
+        value = ('WuXia3dfdf3olong', 1)
         # 执行 sql 语句
         cursor.execute(sql, value)
         # 提交事务
@@ -189,7 +189,7 @@ def delete_table():
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='root',
-                         db='test4python')
+                         db='python3learn')
     # 更新数据
     sql = 'delete from developer where id=%s'
     # 使用 cursor() 方法创建一个游标对象 cursor
@@ -216,10 +216,10 @@ def delete_table():
 
 
 if __name__ == '__main__':
-    # create_table()
+    create_table()
     # insert_table()
     # query_table()
     # query_table(5)
     # update_table()
     # delete_table()
-    pass
+    # pass

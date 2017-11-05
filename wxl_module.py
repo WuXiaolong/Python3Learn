@@ -1,7 +1,7 @@
 # 导入模块
 import wxl_class
 
-from wxl_def import hello
+from wxl_def import hello1
 
 developer = wxl_class.Developer('wxl', 'http://wuxiaolong.me/', 1)  # 实例变量
 print(developer.site, developer.get_sex())
@@ -11,5 +11,5 @@ if __name__ == '__main__':
 else:
     print('我来自另一模块')
 
-m = hello(666, 999)
+m = hello1(666, 999)
 print(m)
