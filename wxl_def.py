@@ -57,7 +57,7 @@ def hello6(x):
     return x
 
 
-print(hello6(666))  # 打印：666
+print(hello6(666))  # 打印：666aaaaaa
 
 
 def hello7(x, y):
